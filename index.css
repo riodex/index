@@ -1,0 +1,10 @@
+html { font: 16pt/1.5 monospace }
+body { margin: 2rem auto }
+body { max-width: 40rem }
+th, td { text-align: right }
+input { box-sizing: border-box }
+input, select, button { font: inherit; width: 100% }
+td, th, input, select, button { padding: .5rem 1rem }
+button { font-weight: bold }
+table { border-collapse: collapse }
+tr.bold { font-weight: bold }

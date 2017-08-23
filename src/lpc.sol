@@ -1,20 +1,22 @@
 import 'ds-thing/thing.sol';
 import 'ds-token/token.sol';
+import 'ds-value/value.sol';
+
 contract CostFunction {
     // can use `now`
     function cost(uint128 want_amt) constant returns (uint128 need_amt);
 }
 
 
-contract Example1 is CostFunction {
+contract Example1 is CostFunction, DSThing {
     DSValue public feed;
     uint128 public fee; // % wad fee
     function Example1(DSValue feed_, uint128 fee_) {
         feed = feed_;
         fee = fee_;
     }
-    function cost(uint128 want_amt) constant returns (uint need_amt) {
-        var price = feed.read();
+    function cost(uint128 want_amt) constant returns (uint128 need_amt) {
+        var price = uint128(feed.read());
         var amt = wmul(price, want_amt);
         var fee_ = wdiv(amt, fee);
         var total = wadd(amt, fee_);

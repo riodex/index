@@ -1,3 +1,5 @@
+import 'ds-token/token.sol';
+
 contract PullBids {
     struct Bid {
         address owner;
@@ -9,13 +11,17 @@ contract PullBids {
     Bid[] public bids;
     function make(DSToken have, uint128 hwad, DSToken want, uint128 wwad) returns (uint256 bid) {
         return bids.push(Bid({
-            msg.sender, have, hwad, want, wwad
+            owner: msg.sender,
+            have: have,
+            have_wad: hwad,
+            want: want,
+            want_wad: wwad
         })) - 1;
     }
     function take(uint256 bid) {
         var B = bids[bid];
-        B.have.move(owner, msg.sender, B.have_wad);
-        B.want.move(msg.sender, owner, B.want_wad);
+        B.have.move(B.owner, msg.sender, B.have_wad);
+        B.want.move(msg.sender, B.owner, B.want_wad);
     }
     // Convienience
     function look(uint256 bid) returns (bool) {

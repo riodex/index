@@ -1,4 +1,5 @@
 import 'ds-thing/thing.sol';
+import 'ds-token/token.sol';
 
 contract CostFunction {
     // can use `now`
@@ -6,8 +7,8 @@ contract CostFunction {
 }
 
 contract LPC is DSThing {
-    // caller has token => caller wants token => costFunction
-    mapping( DSToken =>mapping( DSToken => CostFunctions) ) costs;
+    // caller has dstoken => caller wants dstoken => costFunction
+    mapping( address =>mapping( address => CostFunction) ) costs;
 
     // "have, want" from caller's POV
     function look(DSToken have, DSToken want, uint128 wwad)

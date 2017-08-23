@@ -18,17 +18,16 @@ contract PullBids {
             want_wad: wwad
         })) - 1;
     }
-    function take(uint256 bid) {
+    function take(uint128 bid) {
         var B = bids[bid];
         B.have.move(B.owner, msg.sender, B.have_wad);
         B.want.move(msg.sender, B.owner, B.want_wad);
     }
     // Convienience
-    function look(uint256 bid) returns (bool) {
+    function look(uint128 bid) returns (bool) {
         var B = bids[bid];
-        var approves = B.have.allowance(B.owner, this);
-        var bal = B.have.balanceOf(B.owner);
-        var has = B.have_wad;
-        return ( bal >= has && approves >= has );
+        var deps = B.have.deps(B.owner, this);
+        var enuf = B.have.bals(B.owner) >= bid;
+        return (deps && enuf);
     }
 }

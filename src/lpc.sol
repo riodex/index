@@ -1,5 +1,10 @@
 import 'ds-thing/thing.sol';
 import 'ds-token/token.sol';
+contract CostFunction {
+    // can use `now`
+    function cost(uint128 want_amt) constant returns (uint128 need_amt);
+}
+
 
 contract Example1 is CostFunction {
     DSValue public feed;
@@ -10,17 +15,12 @@ contract Example1 is CostFunction {
     }
     function cost(uint128 want_amt) constant returns (uint need_amt) {
         var price = feed.read();
-        var cost = wmul(price, want_amt);
-        var fee = wdiv(cost, fee);
-        var total = wadd(cost, fee);
+        var amt = wmul(price, want_amt);
+        var fee_ = wdiv(amt, fee);
+        var total = wadd(amt, fee_);
         return total;
     }
 }
-contract CostFunction {
-    // can use `now`
-    function cost(uint128 want_amt) constant returns (uint128 need_amt);
-}
-
 contract LPC is DSThing {
     // caller has dstoken => caller wants dstoken => costFunction
     mapping( address =>mapping( address => CostFunction) ) costs;

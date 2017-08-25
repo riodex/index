@@ -33,6 +33,13 @@ contract Example1 is CostFunction, DSThing {
         return total;
     }
 }
+
+contract Example2 is Example1 {
+    function Example2() {
+        feed = new Inverter(feed);
+    }
+}
+
 contract LPC is DSThing {
     // caller has dstoken => caller wants dstoken => costFunction
     mapping( address =>mapping( address => CostFunction) ) costs;

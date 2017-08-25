@@ -7,6 +7,16 @@ contract CostFunction {
     function cost(uint128 want_amt) constant returns (uint128 need_amt);
 }
 
+// ray inverter
+contract Inverter {
+    DSValue src;
+    function Inverter(DSValue src;) {
+        src = src_;
+    }
+    function read() returns (bytes32) {
+        return rdiv(RAY, src.read());
+    }
+}
 
 contract Example1 is CostFunction, DSThing {
     DSValue public feed;
@@ -16,9 +26,9 @@ contract Example1 is CostFunction, DSThing {
         fee = fee_;
     }
     function cost(uint128 want_amt) constant returns (uint128 need_amt) {
-        var price = uint128(feed.read());
-        var amt = wmul(price, want_amt);
-        var fee_ = wdiv(amt, fee);
+        var price = cast(feed.read()); // TODO ray
+        var amt = wmul(price, want_amt); // TODO
+        var fee_ = wdiv(amt, fee); // TODO
         var total = wadd(amt, fee_);
         return total;
     }

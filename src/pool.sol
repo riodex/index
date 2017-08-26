@@ -1,5 +1,7 @@
 import 'ds-thing/thing.sol';
+import 'ds-token/token.sol';
 
+/*
 // direct-owned by LiquidContainer
 // non-0 balance exists only in a sub-call to LiquidContainer
 contract Liquid is DSToken {
@@ -15,6 +17,7 @@ contract Liquid is DSToken {
         owe = wsub(owe, amt);
         this.burn(amt);
     }
+    bool flowing;
     function flow(address who)
         auth
     {
@@ -50,3 +53,4 @@ contract LiquidContainer is DSAuth
         liq.mint(now);
     }
 }
+*/

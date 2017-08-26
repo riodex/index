@@ -8,3 +8,4 @@ td, th, input, select, button { padding: .5rem 1rem }
 button { font-weight: bold }
 table { border-collapse: collapse }
 tr.bold { font-weight: bold }
+red { color: red } 

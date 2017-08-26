@@ -6,7 +6,7 @@ import './RIO.sol';
 
 contract LPC is DSThing {
     // caller has dstoken => caller wants dstoken => costFunction
-    address vault; // the thing with the coins
+    address vault; // the thing with the coins. TODO disambiguate with ds-vault
     mapping( address =>mapping( address => CostFunction) ) costs;
 
     // "have, want" from caller's POV

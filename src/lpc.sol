@@ -73,3 +73,12 @@ contract LPC is DSThing {
         costs[have][want] = cost;
     }
 }
+
+contract LPCFactory is DSThing {
+    mapping(address=>bool) public isLPC;
+    function create() returns (LPC) {
+        var lpc = new LPC();
+        lpc.setOwner(msg.sender);
+        isLPC[address(lpc)] = true;
+    }
+}

@@ -14,7 +14,7 @@ contract LPC is DSThing {
         constant
         returns (uint128 hwad)
     {
-        var c = costs[have][want].cost(have, want, wwad);
+        return costs[have][want].cost(have, want, wwad);
     }
     // "have, want" from caller's POV
     function take(DSToken have, DSToken want, uint128 wwad)

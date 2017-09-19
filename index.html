@@ -1,24 +1,17 @@
 <!doctype html>
 
+<!-- Hate javascript? We're hiring! -->
+
 <link rel=stylesheet href=index.css>
 <img alt=RioDEX src=VZmcGWn.png>
+
 <script src="web3.min.js"></script>
 <script>
 window.onload = function() {
-//    var Web3 = require('web3');
-//    web3 = new Web3();
     web3 = new Web3(web3.currentProvider);
     web3.eth.defaultAccount = web3.eth.coinbase;
 }
 </script>
-
-<!-- Hate javascript? We're hiring! -->
-
-<!--
-<table>
-<tr> <td style="color: brown"> <b> WARN: </b> no client detected, actions disabled </tr>
-</table>
--->
 
 <h2>click for instructions --> <a style="color:red" href="#help">`help`</a></h2>
 
@@ -50,10 +43,10 @@ without generating a transaction.
 </div>
 </modal>
 
-<h1>LPC</h1>
 
-<h3> basic operations </h3>
 <table>
+    <tr><td><h2>LPC</h2></td><td><i>Liquidity-Providing Contracts</i></td></tr>
+
     <tr>
         <td style="color:pink">`take`</td>  <td> Exchange ETHEREUM TOKENS</td>
     </tr>
@@ -69,25 +62,42 @@ without generating a transaction.
 </table>
 
 
-<h1>SAI</h1>
 
-<h3>available actions</h3>
 <table>
-<tr>
-    <td style="color:pink">`join`</td>  <td> put ETH in the pool, get SKR</td>
-</tr>
-<tr>
-    <td style="color:pink">`open`</td>  <td> create a cup for issuing SAI</td>
-</tr>
-<tr>
-    <td style="color:pink">`bite`</td>  <td> liquidate a risky cup</td>
-</tr>
+    <tr><td><h2>SAI</h2></td><td><i>Sai CDP owner actions</i></td></tr>
+    <tr>
+        <td style="color:pink">`join`</td>  <td> put ETH in the pool, get SKR</td>
+    </tr>
+    <tr>
+        <td style="color:pink">`open`</td>  <td> create a cup for issuing SAI</td>
+    </tr>
+    <tr>
+        <td style="color:pink">`give`</td>  <td> transfer a cup</td>
+    </tr>
+    <tr>
+        <td style="color:pink">`lock`</td>  <td> lock SKR as collateral</td>
+    </tr>
+    <tr>
+        <td style="color:pink">`draw`</td>  <td> draw SAI from your cup</td>
+    </tr>
+    <tr>
+        <td style="color:pink">`wipe`</td>  <td> erase SAI debt from your cup</td>
+    </tr>
+    <tr>
+        <td style="color:pink">`free`</td>  <td> release your collateral</td>
+    </tr>
+    <tr>
+        <td style="color:pink">`shut`</td>  <td> clear a CDP</td>
+    </tr>
+    <tr>
+        <td style="color:pink">`exit`</td>  <td> convert SKR to ETH</td>
+    </tr>
+
 </table>
 
-<h1>RIO</h1>
 
-<h3> perform magic </h3>
 <table>
+    <tr><td><h2>RIO</h2></td><td><i>Tap Rio Pool</i></td></tr>
     <tr>
         <td style="color:pink">`init`</td>  <td> ____ _ ___ ___ _____</td>
     </tr>
@@ -101,39 +111,4 @@ without generating a transaction.
     </tr>
 </table>
 
-
-
-
-
-
-<!---
-<pre><code>
-// (c) IP is illegitimate
-
-import "./RIO.sol";
-import 'ds-thing/thing.sol';
-import 'ds-value/value.sol';
-
-contract QuadraticCost is CostFunction
-                        , DSThing
-{
-    DSValue feed;
-    uint128 a; uint128 b; uint128 c;
-    function configure(DSValue FEED, uint128 A, uint128 B, uint128 C)
-        auth
-    {
-        feed = FEED; a = A; b = B; c = C;
-    }
-    function cost(uint128 q) constant returns (uint128 need_amt) {
-        var f = uint128(feed.read());
-        return wadd(c, wmul(q, wadd(f, fee(q))));
-    }
-    // Extra cost over simple linear cost
-    function fee(uint128 q) constant returns (uint128) {
-        return wadd(b, wmul(a, q));
-    }
-}
-</code></pre>
-
---->
 <a href="https://githubcom/riodex/rio/issues/new">contact</a>

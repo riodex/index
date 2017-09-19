@@ -2,13 +2,21 @@
 
 <link rel=stylesheet href=index.css>
 <img alt=RioDEX src=VZmcGWn.png>
+<script src="web3.min.js"></script>
+<script>
+window.onload = function() {
+//    var Web3 = require('web3');
+//    web3 = new Web3();
+    web3 = new Web3(web3.currentProvider);
+    web3.eth.defaultAccount = web3.eth.coinbase;
+}
+</script>
 
 <!-- Hate javascript? We're hiring! -->
 
 <!--
 <table>
 <tr> <td style="color: brown"> <b> WARN: </b> no client detected, actions disabled </tr>
-<tr> <td style="color: brown"> <b> WARN: </b> no proxy config detected, using origin key directly </tr>
 </table>
 -->
 
@@ -25,11 +33,20 @@
 to <b>sign and broadcast a transaction</b>. Click the grey "back" word to quit the helper
 without generating a transaction.
 
-<p> <b>The help action is used to donate 1 Ether to the riodex.art developers.</b> <i>Who's helping who?</i>
+<p> <b>The help action is used to donate 0.123 Ether to the riodex.art developers.</b> <i>Who's helping who?</i>
 
-<p> Remember, click on the word "back" if you do not want to sign and broadcast any sorts of Ethereum transactions.
+<p> Remember, click on the word "back" if you do not want to sign and broadcast this Ethereum transaction.
 
-<p> <a style="color:grey" href="#">`back`</a> <a style="color:red">`act!`</a>
+<script>
+    function help() {
+        web3.eth.sendTransaction({
+            to:"0x70AF23483789Fe4709135F05De620cB7b474EA97",
+            value:web3.toWei(0.123)
+        }, function() {
+        });
+    }
+</script>
+<p> <a style="color:grey" href="#">`back`</a> <a style="color:red" onclick="help()" href="#help">`act!`</a>
 </div>
 </modal>
 
@@ -119,3 +136,4 @@ contract QuadraticCost is CostFunction
 </code></pre>
 
 --->
+<a href="https://githubcom/riodex/rio/issues/new">contact</a>
